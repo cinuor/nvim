@@ -23,7 +23,6 @@ function! PackInit() abort
 	call minpac#add('voldikss/vim-translator')
 	call minpac#add('sheerun/vim-polyglot')
 	call minpac#add('easymotion/vim-easymotion')
-	call minpac#add('voldikss/vim-codelf')
 
 	" debug
 endfunction
