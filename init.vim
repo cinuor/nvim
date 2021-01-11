@@ -23,6 +23,7 @@ function! PackInit() abort
 	call minpac#add('voldikss/vim-translator')
 	call minpac#add('sheerun/vim-polyglot')
 	call minpac#add('easymotion/vim-easymotion')
+	call minpac#add('voldikss/vim-codelf')
 
 	" debug
 endfunction
@@ -69,10 +70,8 @@ command! ExtensionUpdate call CocBuildUpdate()
 	colorscheme monokai-soda
 	let mapleader=","
 
-	let g:python_host_skip_check=1
-	let g:python_host_prog = '/usr/local/bin/python'
 	let g:python3_host_skip_check=1
-	let g:python3_host_prog = '/usr/local/opt/python@3.9/bin/python3'
+	let g:python3_host_prog = '/usr/bin/python3'
 	" nnoremap <space> za
 " }
 
