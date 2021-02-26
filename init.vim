@@ -2,10 +2,14 @@ function! PackInit() abort
 	packadd minpac
 	call minpac#init()
 	call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+	" language server protocol
 	call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
 
+	" debug adapter protocol
+	call minpac#add('puremourning/vimspector')
+
 	" snipet
-	" call minpac#add('SirVer/ultisnips')
 	call minpac#add('honza/vim-snippets')
 
 	" statusline
@@ -23,6 +27,7 @@ function! PackInit() abort
 	call minpac#add('voldikss/vim-translator')
 	call minpac#add('sheerun/vim-polyglot')
 	call minpac#add('easymotion/vim-easymotion')
+	call minpac#add('tpope/vim-surround')
 
 	" debug
 endfunction
@@ -36,7 +41,7 @@ let g:coc_global_extensions = [
 	\ 'coc-rls',
 	\ 'coc-go',
 	\ 'coc-tabnine',
-	\ 'coc-snippets',
+	\ 'coc-snippets'
 	\ ]
 
 function! CocBuildUpdate()
@@ -134,7 +139,7 @@ command! ExtensionUpdate call CocBuildUpdate()
 			\| endif
 
 	" generate go test unit
-	autocmd FileType go nmap gtf :CocCommand go.test.generate.function<cr>
+	autocmd FileType go nmap tu :CocCommand go.test.generate.function<cr>
 
 " }
 
@@ -162,7 +167,7 @@ command! ExtensionUpdate call CocBuildUpdate()
 " }
 
 " coc-yank {
-	nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+	nnoremap <silent> <leader(★★★)>y  :<C-u>CocList -A --normal yank<CR>
 " }
 
 " nerdcommenter {
@@ -208,7 +213,7 @@ command! ExtensionUpdate call CocBuildUpdate()
     \ 'flowchart_diagrams': {},
     \ 'content_editable': v:false
     \ }
-   nmap <F3> <Plug>MarkdownPreviewToggle
+   nmap mp <Plug>MarkdownPreviewToggle
 " }
 
 " lightline {
@@ -245,16 +250,16 @@ command! ExtensionUpdate call CocBuildUpdate()
 
 " vim-translator {
 	" let g:translator_proxy_url = 'socks5://127.0.0.1:1080'
-	nmap <silent> <Leader>t <Plug>TranslateW
-	vmap <silent> <Leader>t <Plug>TranslateWV
+	nmap <silent> <leader>t <Plug>TranslateW
+	vmap <silent> <leader>t <Plug>TranslateWV
 	" Display translation in a window
-	" nmap <silent> <Leader>w <Plug>TranslateW
-	" vmap <silent> <Leader>w <Plug>TranslateWV
+	" nmap <silent> <leader>w <Plug>TranslateW
+	" vmap <silent> <leader>w <Plug>TranslateWV
 	" Replace the text with translation
-	nmap <silent> <Leader>rt <Plug>TranslateR
-	vmap <silent> <Leader>rt <Plug>TranslateRV
+	nmap <silent> <leader>rt <Plug>TranslateR
+	vmap <silent> <leader>rt <Plug>TranslateRV
 	" Translate the text in clipboard
-	nmap <silent> <Leader>xt <Plug>TranslateX
+	nmap <silent> <leader>xt <Plug>TranslateX
 " }
 
 " vimspector {
@@ -276,6 +281,16 @@ command! ExtensionUpdate call CocBuildUpdate()
 	let g:EasyMotion_smartcase = 1
 
 	" JK motions: Line motions
-	map <Leader>j <Plug>(easymotion-j)
-	map <Leader>k <Plug>(easymotion-k)
+	map <leader>j <Plug>(easymotion-j)
+	map <leader>k <Plug>(easymotion-k)
+" }
+
+" vim-surround {
+	" markdown {
+		" color
+		xmap mr <Plug>VSurround<font color="red">
+		xmap my <Plug>VSurround<font color="#ffa500">
+		xmap mb <Plug>VSurround<font color="blue">
+		xmap mg <Plug>VSurround<font color="green">
+	" }
 " }
