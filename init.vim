@@ -133,11 +133,6 @@ command! ExtensionUpdate call CocBuildUpdate()
 	" Highlight the symbol and its references when holding the cursor.
 	autocmd CursorHold * :call CocActionAsync('highlight')
 
-	" auto format
-	autocmd BufWritePost * if count(['go'],&filetype) 
-			\| :call CocAction('format')
-			\| endif
-
 	" generate go test unit
 	autocmd FileType go nmap tu :CocCommand go.test.generate.function<cr>
 
@@ -264,6 +259,8 @@ command! ExtensionUpdate call CocBuildUpdate()
 
 " vimspector {
 	let g:vimspector_enable_mappings='HUMAN'
+	" nmap <silent> tt <Plug>VimspectorReset
+	nnoremap <silent> tt :VimspectorReset<CR>
 " }
 
 " vim-easymotion {
